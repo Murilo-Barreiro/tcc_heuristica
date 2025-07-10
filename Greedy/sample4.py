@@ -2,7 +2,6 @@
 from pprint import pprint
 from matplotlib import pyplot as plt
 
-
 def greedy_algorithim(x_cursor:int, y_cursor:int, spacing:float, margin:float, usable_w:float, labels:list[tuple]) -> list[tuple]:
     positions = []
 
@@ -108,6 +107,8 @@ if __name__ == "__main__":
     sheet_width, sheet_height = 485, 500
     total_w = sheet_width - 2 * MARGIN
     total_h = sheet_height - 2 * MARGIN
+
+    pprint(grid_positions)
 
     plot_grid(total_w, total_h, grid_positions, MARGIN)
     

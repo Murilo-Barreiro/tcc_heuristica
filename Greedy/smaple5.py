@@ -16,6 +16,7 @@ positions = []  # armazenará (x, y, w, h) para cada rótulo colocado
 x_cursor = 0
 y_cursor = 0
 current_row_h = 0
+
 for (w, h) in labels_sorted:
     # Tentar encaixar na linha atual
     # Se cabe diretamente

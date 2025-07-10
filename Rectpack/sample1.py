@@ -1,4 +1,4 @@
-from rectpack import newPacker, PackingMode
+from rectpack import newPacker, PackingMode, MaxRectsBssf
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -16,7 +16,7 @@ r4 = Rotulos(170.6, 146.4)
 fila = {
     r1: 4,
     r2: 5,
-    r3: 7,
+    r3: 7,  
     r4: 4,
 }
 
@@ -32,7 +32,8 @@ H = int(altura_folha * SCALE)
 
 rotulos_int = {(int((r.altura + SPACING) *SCALE), int((r.largura + SPACING)*SCALE)): i for  r, i in fila.items()}
 
-packer = newPacker(mode=PackingMode.Offline , rotation=True)
+# packer = newPacker(mode=PackingMode.Offline , rotation=True)
+packer = newPacker(pack_algo=MaxRectsBssf, rotation=False)
 
 for (w, h), i in rotulos_int.items():
     for _ in range(i):
@@ -62,7 +63,7 @@ def create_layout(rotulos_posicionados:list[tuple], largura_folha:float, altura_
 
     plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     plt.tight_layout()
-    plt.savefig(r'Rectpack\layout_rectpack.png')
+    plt.savefig(r'Rectpack\MaxRectsBssf.png')
 
 
 recs = [(rect.x, rect.y, rect.width, rect.height)for rect in packer[0]]
